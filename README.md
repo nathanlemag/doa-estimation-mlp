@@ -11,3 +11,20 @@ PyTorch implementation of a multi-head Multi-Layer Perceptron (MLP) for joint so
 - `training/trainer.py` — Training and validation loop using the Adam optimizer.
 - `evaluation/metrics.py` — Evaluates source count accuracy (%) and DOA RMSE (degrees) per SNR on the test set.
 - `HW5.ipynb` — Main notebook running data generation, training, and evaluation plots.
+
+## Google colab setup
+
+Link to this repo
+[doa-estimation-mlp](https://github.com/nathanlemag/doa-estimation-mlp)
+
+On local terminal after file changes:
+
+```bash
+git add . && git commit -m "fix" && git push
+```
+
+On on a google collab cell after changes:
+
+```bash
+!git pull
+```
