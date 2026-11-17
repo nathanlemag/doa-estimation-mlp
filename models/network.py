@@ -60,7 +60,7 @@ class DOANet(nn.Module):
         return class_logits, [doa_1, doa_2, doa_3, doa_4]
 
 
-def export_model_png(model, input_dim=32, filename="doa_net"):
+def export_model_png(model, input_dim=32, filename="assets/doa_net"):
     from torchview import draw_graph
 
     graph = draw_graph(model, input_size=(2, input_dim), save_graph=True, filename=filename)
