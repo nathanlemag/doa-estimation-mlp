@@ -37,8 +37,17 @@ def evaluate_by_snr(model, test_loader):
 
     # Calculation of accuracy and RMSE for each SNR level
     snrs = np.unique(snr_arr)
-    acc_per_snr = [100.0 * (pred_k[snr_arr == s] == true_k[snr_arr == s]).mean() for s in snrs]
-    rmse_per_snr = [np.sqrt(mse_arr[snr_arr == s].mean()) for s in snrs]
+    acc_per_snr, rmse_per_snr = [], []
+
+    for s in snrs:
+        # Select only the samples from the test set that have this SNR level
+        idx = (snr_arr == s)
+
+        # Percentage of correct predictions for the number of sources K at this SNR
+        acc_per_snr.append(100.0 * np.mean(pred_k[idx] == true_k[idx]))
+
+        # Root mean square error (RMSE) in degrees
+        rmse_per_snr.append(np.sqrt(np.mean(mse_arr[idx])))
 
     return snrs, acc_per_snr, rmse_per_snr
 
